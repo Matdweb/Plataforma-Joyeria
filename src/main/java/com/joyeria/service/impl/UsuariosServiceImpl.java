@@ -29,7 +29,7 @@ public class UsuariosServiceImpl implements UsuariosService {
     public Usuarios getUsuario(Usuarios usuario){
         return usuariosDao.findById(usuario.getId()).orElse(null);
     }
-    
+     
     @Override
     @Transactional
     public void save(Usuarios usuario){

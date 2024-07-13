@@ -25,9 +25,15 @@ public class UsuariosController {
     private UsuariosService usuariosService;
 
     @GetMapping("/form")
-    public String mostrarFormulario(Model model) {
+    public String mostrarFormularioRegistrar(Model model) {
         model.addAttribute("usuarios", new Usuarios());
         return "form";
+    }
+
+    @GetMapping("/signIn")
+    public String mostrarFormularioInicioSesion(Model model) {
+        model.addAttribute("usuarios", new Usuarios());
+        return "signIn";
     }
 
     @PostMapping("/registrar")
@@ -35,5 +41,23 @@ public class UsuariosController {
         System.out.println(usuario.toString());
         usuariosService.save(usuario);
         return "redirect:/";
+    }
+
+    @PostMapping("/inicioSesion")
+    public String usuarioIniciarSesion(Usuarios usuario) {
+        var usuarios = usuariosService.getUsuarios();
+        for (int i = 0; i < usuarios.size(); i++) {
+            if(usuarios.get(i).getCorreo().equals(usuario.getCorreo())){
+                if(usuarios.get(i).getContraseña().equals(usuario.getContraseña())){
+                    System.out.println("Usuario correcto");
+                    return "redirect:/";
+                } else {
+                    System.out.println("Contraseña incorrecta");
+                    return "usuarioNoAutorizado";
+                }
+            }
+        }
+        System.out.println("Usuario no valido");
+        return "usuarioNoAutorizado";
     }
 }

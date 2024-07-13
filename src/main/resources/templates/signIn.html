@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Plataforma Joyeria - User Sign In Form</title>
+        <link rel="stylesheet" href="../estilos.css">
+    </head>
+    <body>
+        <form class="content"
+            method="POST"
+            th:action="@{/usuarios/inicioSesion}"
+            th:object="${usuarios}"
+            enctype="multipart/form-data">
+            <section class="parent_container">
+                <div class="container">
+                    <h1>Iniciar Sesion</h1>
+                    <div class="form-group">
+                        <label for="correo">Correo electrónico</label>
+                        <input type="email" id="correo" name="correo"
+                            th:field="*{correo}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contraseña">Contraseña</label>
+                        <input type="password" id="contraseña" name="contraseña"
+                            th:field="*{contraseña}" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn continuar">
+                           Iniciar Sesion
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </form>
+    </body>
+</html>
