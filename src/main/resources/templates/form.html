@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Plataforma Joyeria - User Registration Form</title>
+        <link rel="stylesheet" href="../estilos.css">
+    </head>
+    <body>
+        <input type="checkbox" id="toggle" hidden>
+        <form class="content"
+            method="POST"
+            th:action="@{/usuarios/registrar}"
+            th:object="${usuarios}"
+            enctype="multipart/form-data">
+            <section class="parent_container">
+                <div class="container">
+                    <h1>Informacion Personal</h1>
+                    <input type="hidden" id="id" name="id" th:field="*{id}"
+                        required>
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre"
+                            th:field="*{nombre}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellidos">Apellidos</label>
+                        <input type="text" id="apellidos" name="apellidos"
+                            th:field="*{apellidos}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha_nacimiento">Fecha de registro</label>
+                        <input type="text" id="fecha_registro"
+                            name="fecha_registro" th:field="*{fecha_registro}"
+                            placeholder="dd/mm/aa" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="toggle"
+                            class="btn continuar">Continuar</label>
+                    </div>
+                </div>
+            </section>
+
+            <section class="parent_container">
+                <div class="container">
+                    <h1>Registrate</h1>
+                    <div class="form-group">
+                        <label for="correo">Correo electrónico</label>
+                        <input type="email" id="correo" name="correo"
+                            th:field="*{correo}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="primera_contraseña">Contraseña</label>
+                        <input type="password" id="primera_contraseña"
+                            name="primera_contraseña" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contraseña">Confirma Contraseña</label>
+                        <input type="password" id="contraseña" name="contraseña"
+                            th:field="*{contraseña}" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn continuar">Crear
+                            Usuario</button>
+                    </div>
+                    <label for="toggle"
+                        style="text-decoration: underline;">Back</label>
+                </div>
+            </section>
+        </form>
+    </body>
+</html>
