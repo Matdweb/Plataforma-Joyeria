@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Listado de Productos</title>
+        <link rel="stylesheet" th:href="@{/estilos.css}">
+    </head>
+    <body>
+        <h1>Listado de Productos</h1>
+        <!-- Formulario para filtrar por categorias-->
+        <form th:action="@{/productos/listado}" method="get">
+            <label for="categoria">Seleccionar Categoria:</label>
+            <select name="categoria" id="categoria">
+                <option value="-1"></option>
+                <option th:each="categoria : ${categorias}"
+                th:value="${categoria.idCategoria}"
+                th:text="${categoria.nombreCategoria}"></option>
+            </select>
+            <button type="submit">Filtrar</button>
+        </form>
+    <!--Total de productos-->
+    <p>Total de productos: <span th:text="${totalProductos}"></span></p>
+    
+    <!-- Lista de productos-->
+    <div class="productos-grid">
+        <div th:each="producto : ${productos}" class="producto-card">
+            <img th:src="@{${producto.rutaImagen}}" alt="Imagen del producto"
+                 class="producto-imagen">
+            <h3 th:text="${producto.nombreProducto}"></h3>
+            <p th:text="${producto.descripcion}"></p>
+            <p>Precio: $<span th:text="${producto.precio}"></span></p>
+            <p>Disponibilidad: <span th:text="${producto.disponibilidad}"></span></p>
+        </div>
+    </div>
+            
+    </body>
+</html>
