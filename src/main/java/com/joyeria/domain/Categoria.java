@@ -10,23 +10,18 @@ import lombok.Data;
 @Entity
 @Table(name="Categorias")
 public class Categoria implements Serializable{
+    private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_categoria")
-    private static final long serialVersionUID = 1L;
     
     private Long idCategoria;
     private String nombreCategoria;
-    private boolean activo;
     
     public Categoria(){}
     
-    public Categoria(String nombreCategoria, boolean activo){
+    public Categoria(String nombreCategoria){
         this.nombreCategoria = nombreCategoria;
-        this.activo = activo;
-    }
-    
-    public boolean isActivo(){
-        return activo;
     }
 }

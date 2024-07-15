@@ -22,16 +22,8 @@ public class ProductoServiceImpl implements ProductoService {
     //Funcion filtra por id de categoria (tenerlas preescritas en base de datos con anterioridad)
     @Override
     @Transactional(readOnly=true)
-    public List<Producto> getProductos(boolean activos, int categoria) {
+    public List<Producto> getProductos(int categoria) {
         var lista = productoDao.findAll();
-        if (activos) {
-           lista.removeIf(e -> !e.isActivo());
-        }
-
-        if (categoria >= 0) {
-            lista.removeIf(e -> e.getCategoria() != categoria);
-        }
-        
         return lista;
     }
 }
