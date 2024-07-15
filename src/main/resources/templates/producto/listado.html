@@ -1,6 +1,6 @@
-<!DOCTYPE html>
-
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head>
         <meta charset="UTF-8">
         <title>Listado de Productos</title>
@@ -25,7 +25,7 @@
     <!-- Lista de productos-->
     <div class="productos-grid">
         <div th:each="producto : ${productos}" class="producto-card">
-            <img th:src="@{${producto.rutaImagen}}" alt="Imagen del producto"
+            <img th:src="@{${producto.imagen}}" alt="Imagen del producto"
                  class="producto-imagen">
             <h3 th:text="${producto.nombreProducto}"></h3>
             <p th:text="${producto.descripcion}"></p>

@@ -2,54 +2,38 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
     xmlns:th="http://www.thymeleaf.org"
     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plataforma Joyeria - User Sign In Form</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .login-container {
-            margin-top: 100px;
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .login-header {
-            margin-bottom: 20px;
-        }
-        .create-account {
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-    <div class="container d-flex justify-content-center">
-        <div class="login-container">
-            <h1 class="login-header">Iniciar Sesión</h1>
-            <form method="POST" th:action="@{/usuarios/inicioSesion}" th:object="${usuarios}">
-                <div class="form-group">
-                    <label for="correo">Correo electrónico</label>
-                    <input type="email" id="correo" name="correo" th:field="*{correo}" class="form-control" required>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Plataforma Joyeria - User Sign In Form</title>\
+        <link href="../estilos.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <form class="content"
+            method="POST"
+            th:action="@{/usuarios/inicioSesion}"
+            th:object="${usuarios}"
+            enctype="multipart/form-data">
+            <section class="parent_container">
+                <div class="container">
+                    <h1>Iniciar Sesion</h1>
+                    <div class="form-group">
+                        <label for="correo">Correo electrónico</label>
+                        <input type="email" id="correo" name="correo"
+                            th:field="*{correo}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contraseña">Contraseña</label>
+                        <input type="password" id="contraseña" name="contraseña"
+                            th:field="*{contraseña}" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn continuar">
+                           Iniciar Sesion
+                        </button>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="contraseña">Contraseña</label>
-                    <input type="password" id="contraseña" name="contraseña" th:field="*{contraseña}" class="form-control" required>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
-                <div class="create-account text-center">
-                    <a href="/usuarios/registro" class="btn btn-link">Crear una nueva cuenta</a>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+            </section>
+        </form>
+    </body>
 </html>

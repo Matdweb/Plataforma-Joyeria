@@ -3,5 +3,5 @@ import com.joyeria.domain.Producto;
 import java.util.List;
 
 public interface ProductoService {
-    public List<Producto> getProductos(boolean activos, int categoria);
+    public List<Producto> getProductos(int categoria);
 }
