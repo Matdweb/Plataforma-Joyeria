@@ -50,21 +50,14 @@ public class UsuariosController {
             if(usuarios.get(i).getCorreo().equals(usuario.getCorreo())){
                 if(usuarios.get(i).getContraseña().equals(usuario.getContraseña())){
                     System.out.println("Usuario correcto");
-                    return "redirect:/home";
+                    return "redirect:/";
                 } else {
                     System.out.println("Contraseña incorrecta");
-                  //  return "usuarioNoAutorizado";
-            return "redirect:/usuarios/usuarionoAutorizado";
-
+                    return "usuarioNoAutorizado";
                 }
             }
         }
-       // System.out.println("Usuario no valido");
-        return "redirect:/usuarios/usuarionoAutorizado";
-    }
-    
-        @GetMapping("/usuarionoAutorizado")
-    public String usuarioNoAutorizado(Model model) {
-        return "usuarionoAutorizado";
+        System.out.println("Usuario no valido");
+        return "usuarioNoAutorizado";
     }
 }
